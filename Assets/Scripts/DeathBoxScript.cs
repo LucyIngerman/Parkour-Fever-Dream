@@ -12,8 +12,6 @@ public class DeathBox : MonoBehaviour
         {
             if (instantKill)
             {   
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
                 deathScreenManager.ShowDeathScreen();
                 other.transform.position = respawnPoint.position;
 
