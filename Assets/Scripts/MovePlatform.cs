@@ -14,7 +14,7 @@ public class MovingPlatform : MonoBehaviour
     }
     void Update()
     {
-        float t = Mathf.PingPong(Time.time * speed, 1);
+        float t = Mathf.PingPong(Time.time * speed * 0.5f, 1);
         transform.position = Vector3.Lerp(pointA.position, pointB.position, t);
         rb.MovePosition(Vector3.MoveTowards(transform.position, target, speed * Time.fixedDeltaTime));
 
