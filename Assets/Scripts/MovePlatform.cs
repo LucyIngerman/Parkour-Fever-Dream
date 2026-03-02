@@ -5,18 +5,15 @@ public class MovingPlatform : MonoBehaviour
     public Transform pointA;
     public Transform pointB;
     public float speed = 2f;
-    private Rigidbody rb;
     private Vector3 target;
     void Start()
     {
         target = pointA.position;
-        rb = GetComponent<Rigidbody>();
     }
     void Update()
     {
-        float t = Mathf.PingPong(Time.time * speed * 0.5f, 1);
+        float t = Mathf.PingPong(Time.time * speed * 0.2f, 1);
         transform.position = Vector3.Lerp(pointA.position, pointB.position, t);
-        rb.MovePosition(Vector3.MoveTowards(transform.position, target, speed * Time.fixedDeltaTime));
 
         if (Vector3.Distance(transform.position, target) < 0.1f)
         {
