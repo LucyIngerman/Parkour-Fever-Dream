@@ -1,100 +1,163 @@
-using System;
 using UnityEngine;
 
 public class FirstPersonController : MonoBehaviour
 {
-
     [Header("Movement Speeds")]
     [SerializeField] private float walkSpeed = 3.0f;
     [SerializeField] private float sprintMultiplier = 2.0f;
-
-    [Header("Jump Paramaters")]
-    [SerializeField] private float jumpForce = 5.0f;
-    [SerializeField] private float gravityMultiplier = 1.0f;
 
     [Header("Look Parameters")]
     [SerializeField] private float mouseSensetivity = 0.1f;
     [SerializeField] private float upDownLookRange = 80f;
 
+    [Header("Jump Parameters")]
+    [SerializeField] private float jumpForce = 5.0f;
+    [SerializeField] private float gravityMultiplier = 1.0f;
 
-    [Header("Refrences")]
+    [Header("Dash Parameters")]
+    [SerializeField] private float dashForce = 8.0f;
+    [SerializeField] private float dashCooldown = 1.5f;
+
+    [Header("References")]
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private PlayerInputHandler playerInputHandler;
 
-    private Vector3 currentMovement;
+    private float verticalVelocity;
+    private Vector3 dashVelocity;
     private float verticalRotation;
-    private float currentSpeed => walkSpeed * (playerInputHandler.SprintTriggered ? sprintMultiplier : 1);
+    private bool canDash = true;
+    private float dashCooldownTimer = 0f;
+    private bool inputReady = false;
 
+    private float CurrentSpeed =>
+        walkSpeed * (playerInputHandler.SprintTriggered ? sprintMultiplier : 1f);
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        canDash = true;
+
+        // Delay input for one frame
+        Invoke(nameof(EnableInput), 0.1f);
     }
 
-    // Update is called once per frame
+    private void EnableInput()
+    {
+        inputReady = true;
+    }
     void Update()
     {
         HandleMovement();
         HandleRotation();
+        HandleDashCooldown();
     }
 
-    private Vector3 CalculateWorldDirection()
-    {
-        Vector3 inputDirection = new Vector3(playerInputHandler.MovementInput.x, 0f, playerInputHandler.MovementInput.y);
-        Vector3 worldDirection = transform.TransformDirection(inputDirection);
-        return worldDirection.normalized;
-    }
-
-    private void HandleJumping()
-    {
-        if (characterController.isGrounded)
-        {
-            currentMovement.y = -0.5f;
-            
-            if (playerInputHandler.JumpTriggered)
-            {
-                currentMovement.y = jumpForce;   
-            }
-        }
-        else
-        {
-            currentMovement.y += Physics.gravity.y *gravityMultiplier *Time.deltaTime;
-        }
-    }
+    // =========================
+    // MOVEMENT
+    // =========================
 
     private void HandleMovement()
     {
         Vector3 worldDirection = CalculateWorldDirection();
-        currentMovement.x = worldDirection.x * currentSpeed;
-        currentMovement.z = worldDirection.z * currentSpeed;
+        Vector3 horizontalMove = worldDirection * CurrentSpeed;
 
-        HandleJumping();
-        characterController.Move(currentMovement * Time.deltaTime);
+        // ---- GROUND CHECK ----
+        if (characterController.isGrounded)
+        {
+            if (verticalVelocity < 0)
+                verticalVelocity = -2f;
+
+            if (playerInputHandler.JumpTriggered)
+            {
+                verticalVelocity = jumpForce;
+            }
+        }
+        else
+        {
+            // If player releases jump early, increase gravity
+            if (!playerInputHandler.JumpTriggered && verticalVelocity > 0)
+            {
+                verticalVelocity += Physics.gravity.y * gravityMultiplier * 2f * Time.deltaTime; // extra gravity
+            }
+            else
+            {
+                // Normal gravity
+                verticalVelocity += Physics.gravity.y * gravityMultiplier * Time.deltaTime;
+            }
+        }
+
+        HandleDashing();
+
+        Vector3 finalMove =
+            horizontalMove +
+            dashVelocity +
+            Vector3.up * verticalVelocity;
+
+        characterController.Move(finalMove * Time.deltaTime);
+
+        // Gradually reduce dash over time
+        dashVelocity = Vector3.Lerp(dashVelocity, Vector3.zero, 8f * Time.deltaTime);
     }
 
-    private void ApplyHorizontalRotation(float rotationAmount)
+    private Vector3 CalculateWorldDirection()
     {
-        transform.Rotate(0, rotationAmount, 0);
+        Vector3 inputDirection = new Vector3(
+            playerInputHandler.MovementInput.x,
+            0f,
+            playerInputHandler.MovementInput.y
+        );
+
+        Vector3 worldDirection = transform.TransformDirection(inputDirection);
+        return worldDirection.normalized;
     }
 
-    private void ApplyVerticalRotation(float rotationAmount)
+    // =========================
+    // DASH
+    // =========================
+
+    private void HandleDashing()
     {
-        verticalRotation = Mathf.Clamp(verticalRotation - rotationAmount, -upDownLookRange, upDownLookRange);
-        mainCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+        if (playerInputHandler.DashTriggered && canDash)
+        {
+            canDash = false;
+            dashCooldownTimer = dashCooldown;
+
+            dashVelocity = mainCamera.transform.forward.normalized * dashForce;
+        }
     }
+
+    private void HandleDashCooldown()
+    {
+        if (!canDash)
+        {
+            dashCooldownTimer -= Time.deltaTime;
+
+            if (dashCooldownTimer <= 0f)
+            {
+                canDash = true;
+            }
+        }
+    }
+
+    // =========================
+    // LOOK
+    // =========================
 
     private void HandleRotation()
     {
-        float mouseXRotation = playerInputHandler.RotationInput.x * mouseSensetivity;
-        float mouseYRotation = playerInputHandler.RotationInput.y * mouseSensetivity;
+        float mouseX = playerInputHandler.RotationInput.x * mouseSensetivity;
+        float mouseY = playerInputHandler.RotationInput.y * mouseSensetivity;
 
-        ApplyHorizontalRotation(mouseXRotation);
-        ApplyVerticalRotation(mouseYRotation);
+        // Horizontal rotation
+        transform.Rotate(0f, mouseX, 0f);
 
+        // Vertical rotation
+        verticalRotation -= mouseY;
+        verticalRotation = Mathf.Clamp(verticalRotation, -upDownLookRange, upDownLookRange);
 
-
+        mainCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
     }
 }

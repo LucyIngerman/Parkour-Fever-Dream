@@ -15,11 +15,15 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private string rotation = "Rotation";
     [SerializeField] private string jump = "Jump";
     [SerializeField] private string sprint = "Sprint";
+    [SerializeField] private string dash = "Dash";
+
 
     private InputAction movementAction;
     private InputAction rotationAction;
     private InputAction jumpAction;
     private InputAction sprintAction;
+    private InputAction dashAction;
+
 
 
 
@@ -27,6 +31,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 RotationInput { get; private set; }
     public bool JumpTriggered { get; private set; }
     public bool SprintTriggered { get; private set; }
+    public bool DashTriggered { get; private set; }
 
     private void Awake()
     {
@@ -36,6 +41,8 @@ public class PlayerInputHandler : MonoBehaviour
         rotationAction = mapReference.FindAction(rotation);
         jumpAction = mapReference.FindAction(jump);
         sprintAction = mapReference.FindAction(sprint);
+        dashAction = mapReference.FindAction(dash);
+
 
         SubscriveActionValuesToInputEvents();
     }
@@ -54,6 +61,9 @@ public class PlayerInputHandler : MonoBehaviour
 
         sprintAction.performed += inputInfo => SprintTriggered = true;
         sprintAction.canceled += inputInfo => SprintTriggered = false;
+
+        dashAction.performed += inputInfo => DashTriggered = true;
+        dashAction.canceled += inputInfo => DashTriggered = false;
 
 
     }
