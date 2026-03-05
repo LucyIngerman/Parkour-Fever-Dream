@@ -5,7 +5,8 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("LevelSelector"); 
+        SceneManager.LoadScene("LevelSelector");
+        PlayerPrefs.SetInt("UnlockedLevel", 3);
     }
 
     public void LoadSettings()
