@@ -9,15 +9,8 @@ public class WinBox : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-                winScreenManager.ShowWinScreen();
-                other.transform.position = respawnPoint.position;
-
-                Rigidbody rb = other.GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    rb.linearVelocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
-                }
+            other.transform.position = respawnPoint.position;
+            winScreenManager.ShowWinScreen();
         }
     }
 }

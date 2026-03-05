@@ -12,12 +12,11 @@ public class WinScreenManager : MonoBehaviour
 
     public void ShowWinScreen()
     {
+        Time.timeScale = 0f;
         winScreen.SetActive(true);
         LevelManager.instance.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 1);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Time.timeScale = 0f; // optional: pause game
-        
     }
 
     public void NextLevel()
