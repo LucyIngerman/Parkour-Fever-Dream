@@ -17,6 +17,7 @@ public class FirstPersonController : MonoBehaviour
     [Header("Dash Parameters")]
     [SerializeField] private float dashForce = 8.0f;
     [SerializeField] private float dashCooldown = 1.5f;
+    [SerializeField] private float dashGroundedCooldown = 0.5f;
 
     [Header("References")]
     [SerializeField] private CharacterController characterController;
@@ -135,8 +136,9 @@ public class FirstPersonController : MonoBehaviour
         {
             dashCooldownTimer -= Time.deltaTime;
 
-            if (dashCooldownTimer <= 0f)
+            if (dashCooldownTimer <= 0f || (characterController.isGrounded && dashCooldownTimer <= dashCooldown - dashGroundedCooldown))
             {
+                dashCooldownTimer = 0f;
                 canDash = true;
             }
         }
