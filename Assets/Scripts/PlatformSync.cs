@@ -2,20 +2,13 @@ using UnityEngine;
 
 public class PlatformSync : MonoBehaviour
 {
-    [SerializeField] string playertag = "Player";
     [SerializeField] Transform platform;
-    private void OnTriggerEnter(Collider other)    
+    public CharacterController characterController;
+    private void OnTriggerStay(Collider other)    
     {
-        if (other.CompareTag(playertag))
+        if (other.CompareTag("Player"))
         {
-            other.transform.SetParent(platform);
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag(playertag))
-        {
-            other.transform.SetParent(null);
+            characterController.Move(platform.GetComponent<MovePlatform>().Velocity * Time.deltaTime);
         }
     }
 }

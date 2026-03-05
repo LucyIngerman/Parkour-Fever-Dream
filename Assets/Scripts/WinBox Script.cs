@@ -9,7 +9,7 @@ public class WinBox : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-                winScreenManager.ShowDeathScreen();
+                winScreenManager.ShowWinScreen();
                 other.transform.position = respawnPoint.position;
 
                 Rigidbody rb = other.GetComponent<Rigidbody>();
