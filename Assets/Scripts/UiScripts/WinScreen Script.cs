@@ -10,18 +10,20 @@ public class WinScreenManager : MonoBehaviour
         winScreen.SetActive(false); // hide at start
     }
 
-    public void ShowDeathScreen()
+    public void ShowWinScreen()
     {
         winScreen.SetActive(true);
+        LevelManager.instance.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 1);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0f; // optional: pause game
+        
     }
 
-    public void RestartLevel()
+    public void NextLevel()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ReturnToMainMenu()
