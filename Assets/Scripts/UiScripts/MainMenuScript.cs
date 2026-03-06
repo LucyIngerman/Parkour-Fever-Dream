@@ -1,12 +1,13 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject SaveeraserText;
     public void PlayGame()
     {
         SceneManager.LoadScene("LevelSelector");
-        PlayerPrefs.SetInt("UnlockedLevel", 1);
     }
 
     public void LoadSettings()
@@ -18,5 +19,11 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("QUIT");
         Application.Quit();
+    }
+
+    public void DeleteSaveData()
+    {
+        PlayerPrefs.DeleteAll();
+        SaveeraserText.SetActive(true);
     }
 }

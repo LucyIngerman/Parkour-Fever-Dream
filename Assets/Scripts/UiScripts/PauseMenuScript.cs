@@ -11,7 +11,7 @@ public class PauseMenuManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && !deathScreen.activeSelf) // toggle pause with ESC
+        if ((Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Escape)) && !deathScreen.activeSelf) // toggle pause with ESC
         {
             if (isPaused) Resume();
             else Pause();
