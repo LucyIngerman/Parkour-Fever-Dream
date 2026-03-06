@@ -22,7 +22,6 @@ public class MovePlatform : MonoBehaviour
         transform.position = Vector3.Lerp(pointA.position, pointB.position, (Mathf.Sin(Time.time * speed * 0.1f) + 1f) / 2f);
 
         Velocity = (transform.position - lastPosition) / Time.deltaTime;
-
         lastPosition = transform.position;
 
         if (Vector3.Distance(transform.position, target) < 0.1f)
