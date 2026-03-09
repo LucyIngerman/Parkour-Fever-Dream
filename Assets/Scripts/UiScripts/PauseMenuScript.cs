@@ -4,14 +4,17 @@ using UnityEngine.SceneManagement;
 public class PauseMenuManager : MonoBehaviour
 {
     public GameObject deathScreen; // assign in inspector
+    public GameObject winScreen; // assign in inspector
+    public GameObject TimerText; // assign in inspector
     public GameObject pauseMenuUI;
     public MonoBehaviour[] scriptsToDisable; // player & camera scripts
+    public GameObject[] GameObjectsToDisable; // player & camera gameobjects
 
     private bool isPaused = false;
 
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Escape)) && !deathScreen.activeSelf) // toggle pause with ESC
+        if ((Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Escape)) && !deathScreen.activeSelf && !winScreen.activeSelf) // toggle pause with ESC
         {
             if (isPaused) Resume();
             else Pause();
@@ -29,6 +32,8 @@ public class PauseMenuManager : MonoBehaviour
         // Disable player & camera scripts
         foreach (var script in scriptsToDisable)
             script.enabled = false;
+        foreach (GameObject obj in GameObjectsToDisable)
+            obj.SetActive(false);
     }
 
     public void Resume()
@@ -42,6 +47,8 @@ public class PauseMenuManager : MonoBehaviour
         // Enable player & camera scripts
         foreach (var script in scriptsToDisable)
             script.enabled = true;
+        foreach (GameObject obj in GameObjectsToDisable)
+            obj.SetActive(true);
     }
 
     public void RestartLevel()

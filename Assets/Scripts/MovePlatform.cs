@@ -1,39 +1,37 @@
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Vector3 = UnityEngine.Vector3;
 
 public class MovePlatform : MonoBehaviour
 {
     public Transform pointA;
     public Transform pointB;
-    public float speed = 2f;
-    private Vector3 lastPosition;
-    public Vector3 Velocity { get; private set; }
-    private Vector3 target;
+    public float maxSpeed = 2f;
+    public float acceleration = 3f;
+    Vector3 target;
+    public float Velocity { get; private set; }
     void Start()
     {
-        pointA.parent = null;
-        pointB.parent = null;
+        pointA.parent = transform.parent;
+        pointB.parent = transform.parent;
         transform.position = pointA.position;
-        lastPosition = transform.position;
         target = pointA.position;
     }
     void Update()
-    {
-        transform.position = Vector3.Lerp(pointA.position, pointB.position, (Mathf.Sin(Time.time * speed * 0.1f) + 1f) / 2f);
+    {   
+        Velocity = Mathf.MoveTowards(Velocity, maxSpeed, acceleration * Time.deltaTime);
 
-        Velocity = (transform.position - lastPosition) / Time.deltaTime;
-        lastPosition = transform.position;
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            target,
+            Velocity * 0.1f * Time.deltaTime * Vector3.Distance(pointA.position, pointB.position)
+        );
 
-        if (Vector3.Distance(transform.position, target) < 0.1f)
+        if (Vector3.Distance(transform.position, target) < 0.01f)
         {
-            if(target == pointA.position)
-            {
-                target = pointB.position;
-            }
-            else
-            {
-                target = pointA.position;
-            }
+            target = target == pointA.position ? pointB.position : pointA.position;
+            Velocity = 0f;
         }
     }
 }

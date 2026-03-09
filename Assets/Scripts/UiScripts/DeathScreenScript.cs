@@ -27,6 +27,7 @@ public class DeathScreenManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1f;
+        
         SceneManager.LoadScene(0); // main menu scene index
     }
 }

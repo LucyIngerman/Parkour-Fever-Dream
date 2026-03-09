@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreenManager: {fileID: 815106232}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 1110710614}
   instantKill: 1
 --- !u!65 &34179203
 BoxCollider:
@@ -1382,7 +1382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreenManager: {fileID: 815106232}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 1110710614}
   instantKill: 1
 --- !u!65 &235025239
 BoxCollider:
@@ -1674,7 +1674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreenManager: {fileID: 815106232}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 1110710614}
   instantKill: 1
 --- !u!65 &306039422
 BoxCollider:
@@ -3233,6 +3233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreen: {fileID: 949026665}
+  winScreen: {fileID: 578764562}
   pauseMenuUI: {fileID: 994359195}
   scriptsToDisable:
   - {fileID: 109003334}
@@ -3275,9 +3276,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733743521}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.258819, y: -0, z: -0, w: 0.9659259}
+  m_LocalPosition: {x: 0, y: 8, z: 0.86602557}
+  m_LocalScale: {x: 1, y: 0.17391306, z: 1.3114753}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1340632748}
@@ -3548,7 +3549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreenManager: {fileID: 815106232}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 1110710614}
   instantKill: 1
 --- !u!65 &773002857
 BoxCollider:
@@ -3670,7 +3671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 827181814}
-  characterController: {fileID: 1014765614}
+  Player: {fileID: 1014765612}
 --- !u!65 &785044718
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3840,19 +3841,19 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827181813}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.9848078, z: 0.17364825, w: 0}
-  m_LocalPosition: {x: 0, y: 5, z: 72}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 72}
   m_LocalScale: {x: 5, y: 1, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 785044716}
   - {fileID: 1623789051}
-  - {fileID: 1852606864}
   - {fileID: 235025237}
   - {fileID: 34179201}
   - {fileID: 1975476875}
+  - {fileID: 1852606864}
   m_Father: {fileID: 279489993}
-  m_LocalEulerAnglesHint: {x: -20, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &827181815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3867,7 +3868,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 1623789051}
   pointB: {fileID: 1852606864}
-  speed: 5
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &827181816
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4784,7 +4786,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 564005722}
   pointB: {fileID: 177707815}
-  speed: 25
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &961430721
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5103,6 +5106,7 @@ MonoBehaviour:
   sprintMultiplier: 2
   mouseSensetivity: 0.1
   upDownLookRange: 80
+  fov: 80
   jumpForce: 5
   gravityMultiplier: 0.8
   dashForce: 40
@@ -5111,6 +5115,7 @@ MonoBehaviour:
   characterController: {fileID: 1014765614}
   mainCamera: {fileID: 1945117041}
   playerInputHandler: {fileID: 109003334}
+  settingsManager: {fileID: 0}
 --- !u!143 &1014765614
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5952,19 +5957,19 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340632744}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.258819, y: 0, z: 0, w: 0.9659259}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 18}
   m_LocalScale: {x: 5, y: 1, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2010686019}
   - {fileID: 972320823}
-  - {fileID: 733743522}
   - {fileID: 306039425}
   - {fileID: 1733860395}
   - {fileID: 773002854}
+  - {fileID: 733743522}
   m_Father: {fileID: 279489993}
-  m_LocalEulerAnglesHint: {x: -30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1340632749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5979,7 +5984,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 972320823}
   pointB: {fileID: 733743522}
-  speed: 5
+  maxSpeed: 2
+  acceleration: 3
 --- !u!1 &1390937686
 GameObject:
   m_ObjectHideFlags: 0
@@ -6080,7 +6086,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Trigger: {fileID: 481448812}
-  characterController: {fileID: 1014765614}
+  platform: {fileID: 656171414}
+  Player: {fileID: 1014765612}
 --- !u!1 &1486722046
 GameObject:
   m_ObjectHideFlags: 0
@@ -6986,7 +6993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreenManager: {fileID: 815106232}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 1110710614}
   instantKill: 1
 --- !u!65 &1733860398
 BoxCollider:
@@ -7114,7 +7121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 965836540}
   pointB: {fileID: 258575004}
-  speed: 20
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &1753513558
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7298,9 +7306,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852606863}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.17364825, y: -0, z: -0, w: 0.9848078}
+  m_LocalPosition: {x: 0, y: 7, z: 0.9396927}
+  m_LocalScale: {x: 1, y: 0.3103104, z: 1.1250228}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 827181814}
@@ -7926,7 +7934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreenManager: {fileID: 815106232}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 1110710614}
   instantKill: 1
 --- !u!65 &1975476877
 BoxCollider:
@@ -8069,7 +8077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 1340632748}
-  characterController: {fileID: 1014765614}
+  Player: {fileID: 1014765612}
 --- !u!1 &2037705327
 GameObject:
   m_ObjectHideFlags: 0

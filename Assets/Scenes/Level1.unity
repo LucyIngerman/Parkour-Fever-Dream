@@ -2457,7 +2457,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 512007994}
   pointB: {fileID: 1151083115}
-  speed: 10
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &504386740
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3509,6 +3510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreen: {fileID: 949026665}
+  winScreen: {fileID: 578764562}
   pauseMenuUI: {fileID: 994359195}
   scriptsToDisable:
   - {fileID: 109003334}
@@ -3869,7 +3871,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Trigger: {fileID: 1811788281}
-  characterController: {fileID: 1014765614}
+  platform: {fileID: 944907828}
+  Player: {fileID: 1014765612}
 --- !u!1 &857275351
 GameObject:
   m_ObjectHideFlags: 0
@@ -5214,7 +5217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 594836485}
   pointB: {fileID: 541024168}
-  speed: 15
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &1214604171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5519,7 +5523,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 972320823}
   pointB: {fileID: 733743522}
-  speed: 5
+  maxSpeed: 3
+  acceleration: 5
 --- !u!1 &1390937686
 GameObject:
   m_ObjectHideFlags: 0
@@ -8281,7 +8286,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 1547102612}
   pointB: {fileID: 376616780}
-  speed: 20
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &1902097734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8841,7 +8847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 1340632748}
-  characterController: {fileID: 1014765614}
+  Player: {fileID: 1014765612}
 --- !u!1 &2037705327
 GameObject:
   m_ObjectHideFlags: 0
