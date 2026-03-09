@@ -14,6 +14,6 @@ public class DashAvailability : MonoBehaviour
     void Update()
     {
         bool canDash = firstPersonController.canDash;
-        dashImage.enabled = canDash;
+        dashImage.color = canDash ? Color.white : new Color(1f, 1f, 1f, 0.3f); // full opacity if can dash, half if not
     }
 }

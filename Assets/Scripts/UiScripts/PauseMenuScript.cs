@@ -5,7 +5,6 @@ public class PauseMenuManager : MonoBehaviour
 {
     public GameObject deathScreen; // assign in inspector
     public GameObject winScreen; // assign in inspector
-    public GameObject TimerText; // assign in inspector
     public GameObject pauseMenuUI;
     public MonoBehaviour[] scriptsToDisable; // player & camera scripts
     public GameObject[] GameObjectsToDisable; // player & camera gameobjects

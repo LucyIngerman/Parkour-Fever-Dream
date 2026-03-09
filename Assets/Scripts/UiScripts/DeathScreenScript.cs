@@ -20,8 +20,8 @@ public class DeathScreenManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
     }
 
     public void ReturnToMainMenu()

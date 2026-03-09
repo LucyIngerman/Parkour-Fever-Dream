@@ -1,6 +1,7 @@
 using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class MovePlatformSync : MonoBehaviour
 {
@@ -10,17 +11,16 @@ public class MovePlatformSync : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Player.transform.localScale = new UnityEngine.Vector3(1/platform.localScale.x, 1/platform.localScale.y, 1/platform.localScale.z);
-            Player.transform.SetParent(platform, true);
-        }
-    }
-    private void OnTriggerStay(Collider other)    
-    {
-        if (other.CompareTag("Player"))
-        {
-            Player.transform.localScale = new UnityEngine.Vector3(1/platform.localScale.x, 1/platform.localScale.y, 1/platform.localScale.z);
-            float yaw = Camera.main.transform.eulerAngles.y;
-            Player.transform.rotation = UnityEngine.Quaternion.Euler(0f, yaw, 0f);
+            Vector3 worldScale = Vector3.one;
+
+            other.transform.SetParent(transform);
+
+            // Restore world scale after parenting
+            other.transform.localScale = new Vector3(
+                worldScale.x / transform.lossyScale.x,
+                worldScale.y / transform.lossyScale.y,
+                worldScale.z / transform.lossyScale.z
+            );
         }
     }
 
@@ -28,8 +28,11 @@ public class MovePlatformSync : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Player.transform.localScale = new UnityEngine.Vector3(1/platform.localScale.x, 1/platform.localScale.y, 1/platform.localScale.z);
-            Player.transform.SetParent(null, true);
+            Vector3 worldScale = Vector3.one;
+
+            other.transform.SetParent(null);
+
+            other.transform.localScale = worldScale;
         }
     }
 }

@@ -28,7 +28,7 @@ public class MovePlatform : MonoBehaviour
             Velocity * 0.1f * Time.deltaTime * Vector3.Distance(pointA.position, pointB.position)
         );
 
-        if (Vector3.Distance(transform.position, target) < 0.01f)
+        if (Vector3.Distance(transform.position, target) < 0.05f)
         {
             target = target == pointA.position ? pointB.position : pointA.position;
             Velocity = 0f;

@@ -25,7 +25,7 @@ public class MoveTrigger : MonoBehaviour
             lastPosition = platform.transform.position;
             
             platform.transform.position = Vector3.MoveTowards(platform.transform.position,targetPoint.position,speed * Time.deltaTime);
-             if (Vector3.Distance(platform.transform.position, targetPoint.position) < 0.1f)
+            if (Vector3.Distance(platform.transform.position, targetPoint.position) < 0.1f)
             {
                 move = false;
                 Velocity = Vector3.zero;

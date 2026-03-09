@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class WinScreenManager : MonoBehaviour
 {
     public GameObject winScreen;
-    private TimerScript timerScript;
+    public TimerScript timerScript;
 
     void Start()
     {
@@ -14,7 +14,7 @@ public class WinScreenManager : MonoBehaviour
     public void ShowWinScreen()
     {
         Time.timeScale = 0f;
-        winScreen.GetComponent<TimerScript>().timerText.text = "Time: " + timerScript.timerText.text;
+        timerScript.timerTexts[0].text = "Time: " + timerScript.timerTexts[0].text;
 
         if(PlayerPrefs.HasKey("Level" + SceneManager.GetActiveScene().buildIndex))
         {

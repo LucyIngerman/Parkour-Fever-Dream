@@ -10,6 +10,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float mouseSensetivity = 0.1f;
     [SerializeField] private float upDownLookRange = 80f;
     [SerializeField] private int fov = 80;
+    [SerializeField] private float sensitivityMultiplier = 1.0f;
 
     [Header("Jump Parameters")]
     [SerializeField] private float jumpForce = 5.0f;
@@ -41,8 +42,6 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
-
-        // settingsManager.GetSetting("fov", fov);
         mainCamera.fieldOfView = fov;
         if(settingsManager != null)
         {
@@ -163,8 +162,8 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleRotation()
     {
-        float mouseX = playerInputHandler.RotationInput.x * mouseSensetivity;
-        float mouseY = playerInputHandler.RotationInput.y * mouseSensetivity;
+        float mouseX = playerInputHandler.RotationInput.x * mouseSensetivity * sensitivityMultiplier;
+        float mouseY = playerInputHandler.RotationInput.y * mouseSensetivity * sensitivityMultiplier;
 
         // Horizontal rotation
         transform.Rotate(0f, mouseX, 0f);

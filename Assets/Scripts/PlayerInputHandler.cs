@@ -23,10 +23,6 @@ public class PlayerInputHandler : MonoBehaviour
     private InputAction jumpAction;
     private InputAction sprintAction;
     private InputAction dashAction;
-
-
-
-
     public Vector2 MovementInput { get; private set; }
     public Vector2 RotationInput { get; private set; }
     public bool JumpTriggered { get; private set; }
@@ -43,10 +39,8 @@ public class PlayerInputHandler : MonoBehaviour
         sprintAction = mapReference.FindAction(sprint);
         dashAction = mapReference.FindAction(dash);
 
-
         SubscriveActionValuesToInputEvents();
     }
-
 
     private void SubscriveActionValuesToInputEvents()
     {
@@ -64,7 +58,6 @@ public class PlayerInputHandler : MonoBehaviour
 
         dashAction.performed += inputInfo => DashTriggered = true;
         dashAction.canceled += inputInfo => DashTriggered = false;
-
 
     }
 

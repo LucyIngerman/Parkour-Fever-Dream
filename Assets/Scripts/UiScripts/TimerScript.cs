@@ -3,7 +3,7 @@ using TMPro;
 
 public class TimerScript : MonoBehaviour
 {
-    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI[] timerTexts;
     public PauseMenuManager pauseMenuScreen;
     public float time { get; private set; }
 
@@ -22,11 +22,17 @@ public class TimerScript : MonoBehaviour
 
         if(Time.timeScale != 0)
         {
-            timerText.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
+            for (int i = 0; i < timerTexts.Length; i++)
+            {
+                timerTexts[i].text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
+            }
         }
         else
         {
-            timerText.text = string.Format("Time: {0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
+            for (int i = 0; i < timerTexts.Length; i++)
+            {
+                timerTexts[i].text = string.Format("Time: {0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
+            }
         }
     }
 }
