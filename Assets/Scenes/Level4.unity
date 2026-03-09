@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreenManager: {fileID: 815106232}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 1110710614}
   instantKill: 1
 --- !u!65 &34179203
 BoxCollider:
@@ -1145,7 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreenManager: {fileID: 815106232}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 1110710614}
   instantKill: 1
 --- !u!65 &235025239
 BoxCollider:
@@ -1432,7 +1432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreenManager: {fileID: 815106232}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 1110710614}
   instantKill: 1
 --- !u!65 &306039422
 BoxCollider:
@@ -1601,6 +1601,7 @@ GameObject:
   - component: {fileID: 399258001}
   - component: {fileID: 399258000}
   - component: {fileID: 399257999}
+  - component: {fileID: 399258003}
   m_Layer: 0
   m_Name: MovingLava2
   m_TagString: Untagged
@@ -1639,7 +1640,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 1693758392}
   pointB: {fileID: 1924131231}
-  speed: 15
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &399258000
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1655,7 +1657,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1714,6 +1716,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 399257997}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &399258003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399257997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ef8231425b37245957352d7eedcdb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathScreenManager: {fileID: 815106232}
+  respawnPoint: {fileID: 1110710614}
+  instantKill: 1
 --- !u!1 &439547820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,6 +2204,7 @@ GameObject:
   - component: {fileID: 504386741}
   - component: {fileID: 504386740}
   - component: {fileID: 504386739}
+  - component: {fileID: 504386743}
   m_Layer: 0
   m_Name: MovingLava1
   m_TagString: Untagged
@@ -2225,7 +2243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 512007994}
   pointB: {fileID: 1151083115}
-  speed: 10
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &504386740
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2241,7 +2260,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2300,6 +2319,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 504386737}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &504386743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504386737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ef8231425b37245957352d7eedcdb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathScreenManager: {fileID: 815106232}
+  respawnPoint: {fileID: 1110710614}
+  instantKill: 1
 --- !u!1 &512007993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3121,6 +3155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreen: {fileID: 949026665}
+  winScreen: {fileID: 578764562}
   pauseMenuUI: {fileID: 994359195}
   scriptsToDisable:
   - {fileID: 109003334}
@@ -3328,7 +3363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreenManager: {fileID: 815106232}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 1110710614}
   instantKill: 1
 --- !u!65 &773002857
 BoxCollider:
@@ -3450,7 +3485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 827181814}
-  characterController: {fileID: 1014765614}
+  Player: {fileID: 1014765612}
 --- !u!65 &785044718
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3560,6 +3595,7 @@ GameObject:
   - component: {fileID: 810737630}
   - component: {fileID: 810737629}
   - component: {fileID: 810737628}
+  - component: {fileID: 810737632}
   m_Layer: 0
   m_Name: MovingLava1
   m_TagString: Untagged
@@ -3598,7 +3634,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 1417906867}
   pointB: {fileID: 1029265385}
-  speed: 10
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &810737629
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3614,7 +3651,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3673,6 +3710,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810737626}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &810737632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810737626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ef8231425b37245957352d7eedcdb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathScreenManager: {fileID: 815106232}
+  respawnPoint: {fileID: 1110710614}
+  instantKill: 1
 --- !u!1 &815106231
 GameObject:
   m_ObjectHideFlags: 0
@@ -3773,7 +3825,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 1623789051}
   pointB: {fileID: 1852606864}
-  speed: 5
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &827181816
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4025,6 +4078,7 @@ GameObject:
   - component: {fileID: 921105096}
   - component: {fileID: 921105095}
   - component: {fileID: 921105094}
+  - component: {fileID: 921105098}
   m_Layer: 0
   m_Name: MovingLava3
   m_TagString: Untagged
@@ -4063,7 +4117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 1906335090}
   pointB: {fileID: 591831414}
-  speed: 20
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &921105095
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4079,7 +4134,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -4138,6 +4193,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921105092}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &921105098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921105092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ef8231425b37245957352d7eedcdb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathScreenManager: {fileID: 815106232}
+  respawnPoint: {fileID: 1110710614}
+  instantKill: 1
 --- !u!1 &933336059
 GameObject:
   m_ObjectHideFlags: 0
@@ -4818,6 +4888,7 @@ MonoBehaviour:
   sprintMultiplier: 2
   mouseSensetivity: 0.1
   upDownLookRange: 80
+  fov: 80
   jumpForce: 5
   gravityMultiplier: 0.8
   dashForce: 40
@@ -4826,6 +4897,7 @@ MonoBehaviour:
   characterController: {fileID: 1014765614}
   mainCamera: {fileID: 1945117041}
   playerInputHandler: {fileID: 109003334}
+  settingsManager: {fileID: 0}
 --- !u!143 &1014765614
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5230,6 +5302,7 @@ GameObject:
   - component: {fileID: 1199457733}
   - component: {fileID: 1199457732}
   - component: {fileID: 1199457731}
+  - component: {fileID: 1199457735}
   m_Layer: 0
   m_Name: MovingLava2
   m_TagString: Untagged
@@ -5268,7 +5341,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 1273358851}
   pointB: {fileID: 276773257}
-  speed: 15
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &1199457732
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5284,7 +5358,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -5343,6 +5417,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199457729}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1199457735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199457729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ef8231425b37245957352d7eedcdb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathScreenManager: {fileID: 815106232}
+  respawnPoint: {fileID: 1110710614}
+  instantKill: 1
 --- !u!1 &1214604168
 GameObject:
   m_ObjectHideFlags: 0
@@ -5356,6 +5445,7 @@ GameObject:
   - component: {fileID: 1214604172}
   - component: {fileID: 1214604171}
   - component: {fileID: 1214604170}
+  - component: {fileID: 1214604174}
   m_Layer: 0
   m_Name: MovingLava2
   m_TagString: Untagged
@@ -5394,7 +5484,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 594836485}
   pointB: {fileID: 541024168}
-  speed: 15
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &1214604171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5469,6 +5560,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1214604168}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1214604174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214604168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ef8231425b37245957352d7eedcdb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathScreenManager: {fileID: 815106232}
+  respawnPoint: {fileID: 1110710614}
+  instantKill: 1
 --- !u!1 &1273358850
 GameObject:
   m_ObjectHideFlags: 0
@@ -5823,7 +5929,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 972320823}
   pointB: {fileID: 733743522}
-  speed: 5
+  maxSpeed: 3
+  acceleration: 5
 --- !u!1 &1390937686
 GameObject:
   m_ObjectHideFlags: 0
@@ -5901,6 +6008,7 @@ GameObject:
   - component: {fileID: 1420152581}
   - component: {fileID: 1420152580}
   - component: {fileID: 1420152579}
+  - component: {fileID: 1420152583}
   m_Layer: 0
   m_Name: MovingLava3
   m_TagString: Untagged
@@ -5939,7 +6047,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 1453015439}
   pointB: {fileID: 1442949126}
-  speed: 20
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &1420152580
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5955,7 +6064,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -6014,6 +6123,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420152577}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1420152583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420152577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ef8231425b37245957352d7eedcdb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathScreenManager: {fileID: 815106232}
+  respawnPoint: {fileID: 1110710614}
+  instantKill: 1
 --- !u!1 &1442949125
 GameObject:
   m_ObjectHideFlags: 0
@@ -7077,7 +7201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreenManager: {fileID: 815106232}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 1110710614}
   instantKill: 1
 --- !u!65 &1733860398
 BoxCollider:
@@ -7375,6 +7499,7 @@ GameObject:
   - component: {fileID: 1902097735}
   - component: {fileID: 1902097734}
   - component: {fileID: 1902097733}
+  - component: {fileID: 1902097737}
   m_Layer: 0
   m_Name: MovingLava3
   m_TagString: Untagged
@@ -7413,7 +7538,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 1547102612}
   pointB: {fileID: 376616780}
-  speed: 20
+  maxSpeed: 3
+  acceleration: 5
 --- !u!65 &1902097734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7488,6 +7614,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902097731}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1902097737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902097731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ef8231425b37245957352d7eedcdb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathScreenManager: {fileID: 815106232}
+  respawnPoint: {fileID: 1110710614}
+  instantKill: 1
 --- !u!1 &1906335089
 GameObject:
   m_ObjectHideFlags: 0
@@ -8140,7 +8281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreenManager: {fileID: 815106232}
-  respawnPoint: {fileID: 0}
+  respawnPoint: {fileID: 1110710614}
   instantKill: 1
 --- !u!65 &1975476877
 BoxCollider:
@@ -8283,7 +8424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 1340632748}
-  characterController: {fileID: 1014765614}
+  Player: {fileID: 1014765612}
 --- !u!1 &2037705327
 GameObject:
   m_ObjectHideFlags: 0

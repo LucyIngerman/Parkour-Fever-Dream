@@ -14,8 +14,8 @@ public class MoveTrigger : MonoBehaviour
     void Start()
     {
         move = false;
-        spawnPoint.parent = null;
-        targetPoint.parent = null;
+        spawnPoint.parent = platform.transform.parent;
+        targetPoint.parent = platform.transform.parent;
     }
     void Update()
     {
@@ -28,6 +28,7 @@ public class MoveTrigger : MonoBehaviour
              if (Vector3.Distance(platform.transform.position, targetPoint.position) < 0.1f)
             {
                 move = false;
+                Velocity = Vector3.zero;
             }
         }
     }
@@ -35,7 +36,7 @@ public class MoveTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            move = true;        
+            move = true;
         }
     }
 }

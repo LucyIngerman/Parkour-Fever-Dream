@@ -9,7 +9,7 @@ public class FirstPersonController : MonoBehaviour
     [Header("Look Parameters")]
     [SerializeField] private float mouseSensetivity = 0.1f;
     [SerializeField] private float upDownLookRange = 80f;
-    [SerializeField] private int fov = 60;
+    [SerializeField] private int fov = 80;
 
     [Header("Jump Parameters")]
     [SerializeField] private float jumpForce = 5.0f;
@@ -41,7 +41,11 @@ public class FirstPersonController : MonoBehaviour
     {
 
         // settingsManager.GetSetting("fov", fov);
-        mainCamera.fieldOfView = settingsManager.GetSetting("FOV", fov);
+        mainCamera.fieldOfView = fov;
+        if(settingsManager != null)
+        {
+            mainCamera.fieldOfView = settingsManager.GetSetting("FOV", fov);
+        }
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

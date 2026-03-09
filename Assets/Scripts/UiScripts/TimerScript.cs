@@ -5,7 +5,7 @@ public class TimerScript : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
     public PauseMenuManager pauseMenuScreen;
-    float time;
+    public float time { get; private set; }
 
     void Update()
     {
@@ -20,6 +20,13 @@ public class TimerScript : MonoBehaviour
         int seconds = Mathf.FloorToInt(time % 60);
         int milliseconds = Mathf.FloorToInt((time * 100) % 100);
 
-        timerText.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
+        if(Time.timeScale != 0)
+        {
+            timerText.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
+        }
+        else
+        {
+            timerText.text = string.Format("Time: {0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
+        }
     }
 }
