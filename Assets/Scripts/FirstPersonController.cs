@@ -30,9 +30,11 @@ public class FirstPersonController : MonoBehaviour
     private float verticalVelocity;
     private Vector3 dashVelocity;
     private float verticalRotation;
-    private bool canDash = true;
+    public bool canDash = true;
     private float dashCooldownTimer = 0f;
     private bool inputReady = false;
+
+
 
     private float CurrentSpeed =>
         walkSpeed * (playerInputHandler.SprintTriggered ? sprintMultiplier : 1f);
@@ -169,4 +171,8 @@ public class FirstPersonController : MonoBehaviour
 
         mainCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
     }
+
+
+
+
 }
